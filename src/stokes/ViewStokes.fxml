@@ -9,7 +9,7 @@
 
 <AnchorPane id="anchor" fx:id="anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
    <children>
-      <Pane id="enrtyPane" fx:id="enrtyPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="120.0" layoutY="44.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
                <font>
@@ -21,10 +21,37 @@
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="159.0" layoutY="176.0" text="e-mail cím:" />
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="184.0" layoutY="210.0" text="jelszó:" />
             <TextField id="pwLoginInput" fx:id="pwLoginInput" layoutX="229.0" layoutY="206.0" />
-            <Button id="loginButton" fx:id="loginButton" onAction="#loginButton" layoutX="277.0" layoutY="249.0" mnemonicParsing="false" text="Belépés" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="268.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginButton" text="Belépés" />
+            <Label layoutX="236.0" layoutY="298.0" text="Nem regisztrált még?" />
+            <Button id="registerButton" fx:id="registerButton" layoutX="252.0" layoutY="332.0" mnemonicParsing="false" onAction="#registerButton" text="Regisztrálok" />
          </children>
       </Pane>
-      <SplitPane dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="registerPane" fx:id="registerPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button id="confirmRegisterButton" fx:id="confirmRegisterButton" layoutX="260.0" layoutY="297.0" mnemonicParsing="false" onAction="#loginButton" text="Regisztráció" />
+            <VBox alignment="CENTER_RIGHT" layoutX="155.0" layoutY="134.0" spacing="23.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="Vezetéknév:" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="Keresztnév:" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="204.0" text="e-mail cím:" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="jelszó:" />
+               </children>
+            </VBox>
+            <VBox layoutX="226.0" layoutY="130.0" spacing="15.0">
+               <children>
+                  <TextField id="inputLastName" fx:id="inputLastName" layoutX="226.0" layoutY="130.0" />
+                  <TextField id="inputFirstName" fx:id="inputFirstName" layoutX="226.0" layoutY="165.0" />
+                  <TextField id="inputEmail" fx:id="inputEmail" layoutX="226.0" layoutY="200.0" />
+                  <TextField id="inputPassword" fx:id="inputPassword" layoutX="226.0" layoutY="235.0" />
+               </children>
+            </VBox>
+            <Label layoutX="144.0" layoutY="81.0" text="A regisztrációhoz add meg az adataidat!">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -33,7 +60,6 @@
             </AnchorPane>
             <AnchorPane prefHeight="398.0" prefWidth="430.0">
                <children>
-                  <Pane id="registerPane" fx:id="registerPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -48,10 +74,9 @@
                   <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" prefHeight="305.0" prefWidth="447.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="C1" />
-                              <TableColumn prefWidth="75.0" text="C2" />
-                           </columns>
+                          <placeholder>
+                            <Label text="Nincs adat." />
+                          </placeholder>
                         </TableView>
                      </children>
                   </Pane>

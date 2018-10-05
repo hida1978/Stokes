@@ -29,6 +29,8 @@ public class ViewStokesController implements Initializable {
     @FXML
     TextField inputEmail;
     @FXML
+    TextField inputPassword;    
+    @FXML
     Button addNewContactButton;
     @FXML
     StackPane menuPane;
@@ -51,18 +53,34 @@ public class ViewStokesController implements Initializable {
     @FXML
     TextField pwLoginInput;  
     @FXML
-    Pane entryPane;    
+    Pane loginPane;   
+    @FXML
+    Pane registerPane;   
+    @FXML
+    Button registerButton;   
+    @FXML
+    Pane itemPane;    
+
     
     @FXML
     private void loginButton(ActionEvent event) {
-        if (emailLoginInput.getText().equals("hida") && pwLoginInput.getText().equals("hida")){
-            entryPane.setVisible(false);
+        if (emailLoginInput.getText().equals("1") && pwLoginInput.getText().equals("1")){
+            loginPane.setVisible(false);
             mainSplit.setVisible(true);
+            itemPane.setVisible(true);            
         System.out.println("correct password");            
         }
 
     }
-    
+
+    @FXML
+    private void registerButton(ActionEvent event) {
+        System.out.println("regiszer");         
+            loginPane.setVisible(false);
+            registerPane.setVisible(true);              
+    }
+
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
