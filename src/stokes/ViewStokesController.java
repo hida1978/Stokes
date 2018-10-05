@@ -49,11 +49,18 @@ public class ViewStokesController implements Initializable {
     @FXML
     TextField emailLoginInput;
     @FXML
-    TextField pwLoginInput;    
+    TextField pwLoginInput;  
+    @FXML
+    Pane entryPane;    
     
     @FXML
     private void loginButton(ActionEvent event) {
         System.out.println("You clicked me!");
+        if (emailLoginInput.getText().equals("hida") && pwLoginInput.getText().equals("hida")){
+            entryPane.setVisible(false);
+            mainSplit.setVisible(true);
+        System.out.println("correct password");            
+        }
 
     }
     
