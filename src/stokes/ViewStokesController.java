@@ -55,7 +55,6 @@ public class ViewStokesController implements Initializable {
     
     @FXML
     private void loginButton(ActionEvent event) {
-        System.out.println("You clicked me!");
         if (emailLoginInput.getText().equals("hida") && pwLoginInput.getText().equals("hida")){
             entryPane.setVisible(false);
             mainSplit.setVisible(true);
