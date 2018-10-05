@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="anchor" fx:id="anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
+   <children>
+      <Pane id="enrtyPane" fx:id="enrtyPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="120.0" layoutY="44.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField id="emailLoginInput" fx:id="emailLoginInput" layoutX="229.0" layoutY="172.0" />
+            <Label layoutX="271.0" layoutY="146.0" text="BELÉPÉS" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="159.0" layoutY="176.0" text="e-mail cím:" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="184.0" layoutY="210.0" text="jelszó:" />
+            <TextField id="pwLoginInput" fx:id="pwLoginInput" layoutX="229.0" layoutY="206.0" />
+            <Button id="loginButton" fx:id="loginButton" onAction="#loginButton" layoutX="277.0" layoutY="249.0" mnemonicParsing="false" text="Belépés" />
+         </children>
+      </Pane>
+      <SplitPane dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <StackPane id="menuPane" fx:id="menuPane" prefHeight="398.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="398.0" prefWidth="430.0">
+               <children>
+                  <Pane id="registerPane" fx:id="registerPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView id="contatcTable" fx:id="contatcTable" prefHeight="294.0" prefWidth="447.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView id="itemTable" fx:id="itemTable" prefHeight="305.0" prefWidth="447.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="C1" />
+                              <TableColumn prefWidth="75.0" text="C2" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
