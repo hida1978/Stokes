@@ -51,7 +51,7 @@
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" disable="true" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -60,17 +60,16 @@
             </AnchorPane>
             <AnchorPane prefHeight="398.0" prefWidth="430.0">
                <children>
-                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="contatcTable" fx:id="contatcTable" prefHeight="294.0" prefWidth="447.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
+                        <TableView id="contatcTable" fx:id="contatcTable" editable="true" prefHeight="313.0" prefWidth="447.0">
+                          <placeholder>
+                            <Label text="Nincs adat." />
+                          </placeholder>
                         </TableView>
                      </children>
                   </Pane>
+                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" prefHeight="305.0" prefWidth="447.0">
