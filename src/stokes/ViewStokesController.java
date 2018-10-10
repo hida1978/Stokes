@@ -34,7 +34,7 @@ public class ViewStokesController implements Initializable {
     @FXML
     TableView contactTable;
     @FXML
-    TextField inputLastname;
+    TextField inputLastName;
     @FXML
     TextField inputFirstName;
     @FXML
@@ -173,11 +173,8 @@ public class ViewStokesController implements Initializable {
                 };
 
         removeCol.setCellFactory( cellFactory );
-        
         contactTable.getColumns().addAll(lastNameCol, firstNameCol, emailCol, removeCol);
-
         data.addAll(db.getAllContacts());
-
         contactTable.setItems(data);
     }
     
@@ -196,11 +193,25 @@ public class ViewStokesController implements Initializable {
 
     @FXML
     private void registerButton(ActionEvent event) {
-        System.out.println("regiszer");         
             loginPane.setVisible(false);
             registerPane.setVisible(true);              
     }
 
+    @FXML
+    private void addContact(ActionEvent event) {
+        String email = inputEmail.getText();
+        if (email.length() > 3 && email.contains("@") && email.contains(".")) {
+            Person newPerson = new Person(inputLastName.getText(), inputFirstName.getText(), email);
+            data.add(newPerson);
+            db.addContact(newPerson);
+            inputLastName.clear();
+            inputFirstName.clear();
+            inputEmail.clear();
+        }else{
+            alert("Adj meg egy valódi e-mail címet!");
+        }
+    }    
+    
     private void alert(String text) {
         mainSplit.setDisable(true);
         mainSplit.setOpacity(0.4);
