@@ -7,29 +7,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="anchor" fx:id="anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
+<AnchorPane id="anchor" fx:id="anchor" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
    <children>
-      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="120.0" layoutY="44.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
+            <Label layoutX="230.0" layoutY="129.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField id="emailLoginInput" fx:id="emailLoginInput" layoutX="229.0" layoutY="172.0" />
-            <Label layoutX="271.0" layoutY="146.0" text="BELÉPÉS" />
-            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="159.0" layoutY="176.0" text="e-mail cím:" />
-            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="184.0" layoutY="210.0" text="jelszó:" />
-            <TextField id="pwLoginInput" fx:id="pwLoginInput" layoutX="229.0" layoutY="206.0" />
-            <Button id="loginButton" fx:id="loginButton" layoutX="268.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginButton" text="Belépés" />
-            <Label layoutX="236.0" layoutY="298.0" text="Nem regisztrált még?" />
-            <Button id="registerButton" fx:id="registerButton" layoutX="252.0" layoutY="332.0" mnemonicParsing="false" onAction="#registerButton" text="Regisztrálok" />
+            <TextField id="emailLoginInput" fx:id="emailLoginInput" layoutX="339.0" layoutY="257.0" />
+            <Label layoutX="381.0" layoutY="231.0" text="BELÉPÉS" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="269.0" layoutY="261.0" text="e-mail cím:" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="294.0" layoutY="295.0" text="jelszó:" />
+            <TextField id="pwLoginInput" fx:id="pwLoginInput" layoutX="339.0" layoutY="291.0" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="378.0" layoutY="334.0" mnemonicParsing="false" onAction="#loginButton" text="Belépés" />
+            <Label layoutX="346.0" layoutY="383.0" text="Nem regisztrált még?" />
+            <Button id="registerButton" fx:id="registerButton" layoutX="362.0" layoutY="417.0" mnemonicParsing="false" onAction="#registerButton" text="Regisztrálok" />
          </children>
       </Pane>
       <Pane id="registerPane" fx:id="registerPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button id="confirmRegisterButton" fx:id="confirmRegisterButton" layoutX="260.0" layoutY="297.0" mnemonicParsing="false" onAction="#loginButton" text="Regisztráció" />
-            <VBox alignment="CENTER_RIGHT" layoutX="155.0" layoutY="134.0" spacing="23.0">
+            <VBox alignment="CENTER_RIGHT" layoutX="335.0" layoutY="199.0" spacing="23.0">
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="Vezetéknév:" />
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="Keresztnév:" />
@@ -37,7 +36,7 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="jelszó:" />
                </children>
             </VBox>
-            <VBox layoutX="226.0" layoutY="130.0" spacing="15.0">
+            <VBox layoutX="406.0" layoutY="195.0" spacing="15.0">
                <children>
                   <TextField id="inputLastName" fx:id="inputLastName" layoutX="226.0" layoutY="130.0" />
                   <TextField id="inputFirstName" fx:id="inputFirstName" layoutX="226.0" layoutY="165.0" />
@@ -45,13 +44,14 @@
                   <TextField id="inputPassword" fx:id="inputPassword" layoutX="226.0" layoutY="235.0" />
                </children>
             </VBox>
-            <Label layoutX="144.0" layoutY="81.0" text="A regisztrációhoz add meg az adataidat!">
+            <Button id="confirmRegisterButton" fx:id="confirmRegisterButton" layoutX="441.0" layoutY="362.0" mnemonicParsing="false" onAction="#loginButton" text="Regisztráció" />
+            <Label layoutX="330.0" layoutY="141.0" text="A regisztrációhoz add meg az adataidat!">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -60,14 +60,31 @@
             </AnchorPane>
             <AnchorPane prefHeight="398.0" prefWidth="430.0">
                <children>
-                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="contatcTable" fx:id="contatcTable" editable="true" prefHeight="313.0" prefWidth="447.0">
+                        <TableView id="contactTable" fx:id="contactTable" editable="true" prefHeight="540.0" prefWidth="580.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>
                         </TableView>
-                        <Text layoutX="182.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contactpane" />
+                        <Text layoutX="16.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contactpane" />
+                        <Button id="addNewContactButton" fx:id="addNewContactButton" layoutX="407.0" layoutY="603.0" mnemonicParsing="false" onAction="#loginButton" text="Regisztráció" />
+                        <VBox layoutX="224.0" layoutY="553.0" spacing="8.0">
+                           <children>
+                              <TextField id="inputLastName" fx:id="inputLastName1" layoutX="226.0" layoutY="130.0" />
+                              <TextField id="inputFirstName" fx:id="inputFirstName1" layoutX="226.0" layoutY="165.0" />
+                              <TextField id="inputEmail" fx:id="inputEmail1" layoutX="226.0" layoutY="200.0" />
+                              <TextField id="inputPassword" fx:id="inputPassword1" layoutX="226.0" layoutY="235.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" layoutX="142.0" layoutY="557.0" spacing="16.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="Vezetéknév:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="Keresztnév:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="204.0" text="e-mail cím:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="jelszó:" />
+                           </children>
+                        </VBox>
                      </children>
                   </Pane>
                   <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -76,7 +93,7 @@
                      </children></Pane>
                   <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="itemTable" fx:id="itemTable" prefHeight="305.0" prefWidth="447.0">
+                        <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="580.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>

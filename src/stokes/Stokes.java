@@ -15,7 +15,9 @@ public class Stokes extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("ViewStokes.fxml"));
         
         Scene scene = new Scene(root);
-        stage.setResizable(false);
+//        stage.setResizable(false);
+        stage.setWidth(800);
+        stage.setHeight(750);
         stage.setScene(scene);
         stage.show();
     }
