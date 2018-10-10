@@ -51,7 +51,7 @@
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" disable="true" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -67,9 +67,13 @@
                             <Label text="Nincs adat." />
                           </placeholder>
                         </TableView>
+                        <Text layoutX="182.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contactpane" />
                      </children>
                   </Pane>
-                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text layoutX="212.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="exportpane" />
+                     </children></Pane>
                   <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" prefHeight="305.0" prefWidth="447.0">
@@ -77,6 +81,7 @@
                             <Label text="Nincs adat." />
                           </placeholder>
                         </TableView>
+                        <Text layoutX="183.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="itempane" />
                      </children>
                   </Pane>
                </children>
