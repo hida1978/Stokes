@@ -3,6 +3,8 @@ package stokes;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -17,8 +20,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -76,9 +83,10 @@ public class ViewStokesController implements Initializable {
  
      DB db = new DB();
 
-    private final String MENU_CONTACTS = "Kontaktok";
+    private final String MENU_CONTACTS = "Felhasználók";
     private final String MENU_LIST = "Lista";
     private final String MENU_EXPORT = "Exportálás";
+    private final String MENU_ITEMS = "Termékek";    
     private final String MENU_EXIT = "Kilépés";
 
     private final ObservableList<Person> data = FXCollections.observableArrayList();  
@@ -177,6 +185,67 @@ public class ViewStokesController implements Initializable {
         data.addAll(db.getAllContacts());
         contactTable.setItems(data);
     }
+
+    private void setMenuData() {
+        TreeItem<String> treeItemRoot1 = new TreeItem<>("Menü");
+        TreeView<String> treeView = new TreeView<>(treeItemRoot1);
+        treeView.setShowRoot(false);
+
+        TreeItem<String> nodeItemA = new TreeItem<>(MENU_CONTACTS);
+        TreeItem<String> nodeItemB = new TreeItem<>(MENU_ITEMS);              
+        TreeItem<String> nodeItemC = new TreeItem<>(MENU_EXIT);
+  
+
+        nodeItemA.setExpanded(true);
+        nodeItemB.setExpanded(true);        
+
+        Node contactsNode = new ImageView(new Image(getClass().getResourceAsStream("/contacts.png")));
+        Node exportNode = new ImageView(new Image(getClass().getResourceAsStream("/export.png")));
+        TreeItem<String> nodeItemA1 = new TreeItem<>(MENU_LIST, contactsNode);
+        TreeItem<String> nodeItemA2 = new TreeItem<>(MENU_EXPORT, exportNode);
+
+        nodeItemA.getChildren().addAll(nodeItemA1, nodeItemA2);
+        treeItemRoot1.getChildren().addAll(nodeItemA, nodeItemB, nodeItemC);
+
+        menuPane.getChildren().add(treeView);
+
+        treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                TreeItem<String> selectedItem = (TreeItem<String>) newValue;
+                String selectedMenu;
+                selectedMenu = selectedItem.getValue();
+
+                if (null != selectedMenu) {
+                    switch (selectedMenu) {
+                        case MENU_CONTACTS:
+                            selectedItem.setExpanded(true);
+                            break;
+                        case MENU_LIST:
+                            contactPane.setVisible(true);
+                            exportPane.setVisible(false);
+                            itemPane.setVisible(false);                            
+                            break;
+                        case MENU_EXPORT:
+                            contactPane.setVisible(false);
+                            exportPane.setVisible(true);                            
+                            itemPane.setVisible(false);
+                            break;
+                        case MENU_ITEMS:
+                            contactPane.setVisible(false);
+                            exportPane.setVisible(false);                            
+                            itemPane.setVisible(true);
+                            break;                            
+                        case MENU_EXIT:
+                            System.exit(0);
+                            break;
+                    }
+                }
+
+            }
+        });
+
+    }
+
     
     @FXML
     private void loginButton(ActionEvent event) {
@@ -238,6 +307,7 @@ public class ViewStokesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     setTableData();
+    setMenuData();    
 
     }    
     

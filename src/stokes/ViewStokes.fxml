@@ -60,7 +60,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="398.0" prefWidth="430.0">
                <children>
-                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="contactTable" fx:id="contactTable" editable="true" prefHeight="540.0" prefWidth="580.0">
                           <placeholder>
@@ -87,18 +87,24 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane id="expotPane" fx:id="expotPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="exportPane" fx:id="exportPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Text layoutX="212.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="exportpane" />
+                        <Text layoutX="222.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás">
+                           <font>
+                              <Font size="25.0" />
+                           </font></Text>
+                        <TextField id="inputExportName" fx:id="inputExportName" layoutX="130.0" layoutY="253.0" prefHeight="25.0" prefWidth="279.0" />
+                        <Text layoutX="222.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adj meg egy fájl nevet!" />
+                        <Button id="eportButton" fx:id="eportButton" layoutX="244.0" layoutY="301.0" mnemonicParsing="false" text="Export" />
                      </children></Pane>
-                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="580.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>
                         </TableView>
-                        <Text layoutX="183.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="itempane" />
+                        <Text layoutX="39.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="itempane" />
                      </children>
                   </Pane>
                </children>
