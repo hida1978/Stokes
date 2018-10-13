@@ -126,7 +126,7 @@ public class ViewStokesController implements Initializable {
         );
 
         TableColumn emailCol = new TableColumn("Email cím");
-        emailCol.setMinWidth(250);
+        emailCol.setMinWidth(180);
         emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
         emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -140,7 +140,23 @@ public class ViewStokesController implements Initializable {
             }
         }
         );
+        
+        TableColumn passwordCol = new TableColumn("Jelszó");
+        passwordCol.setMinWidth(120);
+        passwordCol.setCellValueFactory(new PropertyValueFactory<Person, String>("passWord"));
+        passwordCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        passwordCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> t) {
+                Person actualPerson = (Person) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                actualPerson.setPassWord(t.getNewValue());
+                db.updateContact(actualPerson);
+            }
+        }
+        );
+        
         TableColumn removeCol = new TableColumn( "Törlés" );
         emailCol.setMinWidth(100);
 
@@ -181,7 +197,7 @@ public class ViewStokesController implements Initializable {
                 };
 
         removeCol.setCellFactory( cellFactory );
-        contactTable.getColumns().addAll(lastNameCol, firstNameCol, emailCol, removeCol);
+        contactTable.getColumns().addAll(lastNameCol, firstNameCol, emailCol, passwordCol, removeCol);
         data.addAll(db.getAllContacts());
         contactTable.setItems(data);
     }
@@ -270,12 +286,13 @@ public class ViewStokesController implements Initializable {
     private void addContact(ActionEvent event) {
         String email = inputEmail.getText();
         if (email.length() > 3 && email.contains("@") && email.contains(".")) {
-            Person newPerson = new Person(inputLastName.getText(), inputFirstName.getText(), email);
+            Person newPerson = new Person(inputLastName.getText(), inputFirstName.getText(), email, inputPassword.getText());
             data.add(newPerson);
             db.addContact(newPerson);
             inputLastName.clear();
             inputFirstName.clear();
             inputEmail.clear();
+            inputPassword.clear();            
         }else{
             alert("Adj meg egy valódi e-mail címet!");
         }

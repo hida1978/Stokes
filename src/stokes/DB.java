@@ -55,7 +55,7 @@ public class DB {
             ResultSet rs = dbmd.getTables(null, "APP", "CONTACTS", null);
             if(!rs.next())
             { 
-             createStatement.execute("create table contacts(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),lastname varchar(20), firstname varchar(20), email varchar(30))");
+             createStatement.execute("create table contacts(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),lastname varchar(20), firstname varchar(20), email varchar(30), password varchar(15))");
             }
         } catch (SQLException ex) {
             System.out.println("Valami baj van az adattáblák létrehozásakor.");
@@ -72,7 +72,7 @@ public class DB {
             users = new ArrayList<>();
             
             while (rs.next()){
-                Person actualPerson = new Person(rs.getInt("id"),rs.getString("lastname"),rs.getString("firstname"),rs.getString("email"));
+                Person actualPerson = new Person(rs.getInt("id"),rs.getString("lastname"),rs.getString("firstname"),rs.getString("email"), rs.getString("password"));
                 users.add(actualPerson);
             }
         } catch (SQLException ex) {
@@ -84,11 +84,12 @@ public class DB {
     
     public void addContact(Person person){
       try {
-        String sql = "insert into contacts (lastname, firstname, email) values (?,?,?)";
+        String sql = "insert into contacts (lastname, firstname, email, password) values (?,?,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setString(1, person.getLastName());
         preparedStatement.setString(2, person.getFirstName());
         preparedStatement.setString(3, person.getEmail());
+        preparedStatement.setString(4, person.getPassWord());        
         preparedStatement.execute();
         } catch (SQLException ex) {
             System.out.println("Valami baj van a contact hozzáadásakor");
@@ -98,12 +99,14 @@ public class DB {
     
     public void updateContact(Person person){
       try {
-            String sql = "update contacts set lastname = ?, firstname = ? , email = ? where id = ?";
+            String sql = "update contacts set lastname = ?, firstname = ? ,email = ?, password = ? where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, person.getLastName());
             preparedStatement.setString(2, person.getFirstName());
             preparedStatement.setString(3, person.getEmail());
-            preparedStatement.setInt(4, Integer.parseInt(person.getId()));
+            preparedStatement.setString(4, person.getPassWord());                
+            preparedStatement.setInt(5, Integer.parseInt(person.getId()));
+         
             preparedStatement.execute();
         } catch (SQLException ex) {
             System.out.println("Valami baj van a contact hozzáadásakor");

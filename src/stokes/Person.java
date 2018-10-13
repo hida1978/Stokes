@@ -9,26 +9,30 @@ public class Person {
     private final SimpleStringProperty firstName;
     private final SimpleStringProperty lastName;
     private final SimpleStringProperty email;
+    private final SimpleStringProperty passWord;    
     private final SimpleStringProperty id;
     
     public Person() {
         this.firstName = new SimpleStringProperty("");
         this.lastName = new SimpleStringProperty("");
         this.email = new SimpleStringProperty("");
+        this.passWord = new SimpleStringProperty("");        
         this.id = new SimpleStringProperty("");
     }
  
-    public Person(String lName, String fName, String email) {
+    public Person(String lName, String fName, String email, String pWord) {
         this.lastName = new SimpleStringProperty(lName);
         this.firstName = new SimpleStringProperty(fName);
         this.email = new SimpleStringProperty(email);
+        this.passWord = new SimpleStringProperty(pWord);        
         this.id = new SimpleStringProperty("");
     }
     
-    public Person(Integer id, String lName, String fName, String email) {
+    public Person(Integer id, String lName, String fName, String email, String pWord) {
         this.lastName = new SimpleStringProperty(lName);
         this.firstName = new SimpleStringProperty(fName);
         this.email = new SimpleStringProperty(email);
+        this.passWord = new SimpleStringProperty(pWord);        
         this.id = new SimpleStringProperty(String.valueOf(id));
     }
     
@@ -60,5 +64,11 @@ public class Person {
     public void setId(String fId){
         id.set(fId);
     }
-    
+
+    public String getPassWord() {
+        return passWord.get();
+    }
+    public void setPassWord(String fName) {
+        passWord.set(fName);
+    }    
 }

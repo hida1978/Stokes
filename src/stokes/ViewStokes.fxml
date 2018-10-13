@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="anchor" fx:id="anchor" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
+<AnchorPane id="anchor" fx:id="anchor" prefHeight="700.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
    <children>
       <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -51,7 +51,7 @@
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.24749163879598662" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.1935483870967742" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -60,9 +60,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="398.0" prefWidth="430.0">
                <children>
-                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="contactPane" fx:id="contactPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="contactTable" fx:id="contactTable" editable="true" prefHeight="540.0" prefWidth="580.0">
+                        <TableView id="contactTable" fx:id="contactTable" editable="true" prefHeight="540.0" prefWidth="670.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>
@@ -97,9 +97,9 @@
                         <Text layoutX="222.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adj meg egy fájl nevet!" />
                         <Button id="eportButton" fx:id="eportButton" layoutX="244.0" layoutY="301.0" mnemonicParsing="false" text="Export" />
                      </children></Pane>
-                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="580.0">
+                        <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="670.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>
