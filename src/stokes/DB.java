@@ -125,5 +125,26 @@ public class DB {
             System.out.println(""+ex);
         }
     }
-    
+
+    public void checkPw() {
+        try {
+            String sql = "select * from contacts where password = ?";
+            String pw = "cc";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, pw);  
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                String email = rs.getString("email");
+                String password = rs.getString("password");      
+                System.out.println(email + " | " + password);
+            }
+                
+        } catch (SQLException ex) {
+            System.out.println("Valami baj van a jelszó ellenörzésekor!");
+            System.out.println(""+ex);
+        }
+  
+    }
+         
 }

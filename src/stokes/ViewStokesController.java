@@ -265,6 +265,7 @@ public class ViewStokesController implements Initializable {
     
     @FXML
     private void loginButton(ActionEvent event) {
+        db.checkPw();
         if (emailLoginInput.getText().equals("1") && pwLoginInput.getText().equals("1")){
             loginPane.setVisible(false);
 //            registerPane.setVisible(false);             
@@ -324,7 +325,10 @@ public class ViewStokesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     setTableData();
-    setMenuData();    
+    setMenuData(); 
+    String p = "cc";
+    db.checkPw();
+//    db.checkPw(p);
 
     }    
     

@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Sat Oct 13 10:31:30 CEST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0166-6c8d-4a22-00000675d428 
-on database directory C:\Users\Hida\Documents\NetBeansProjects\Stokes\sampleDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
-Loaded from file:/C:/Users/Hida/Documents/NetBeansProjects/Stokes/dist/run653264433/lib/derby.jar
+Sun Oct 21 20:33:59 CEST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0166-97e7-be48-0000015444f0 
+on database directory C:\Users\Zsofi\Documents\NetBeansProjects\Stokes\sampleDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/C:/Users/Zsofi/Documents/NetBeansProjects/Stokes/dist/run1315519520/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_171-b11
-user.dir=C:\Users\Hida\Documents\NetBeansProjects\Stokes
+user.dir=C:\Users\Zsofi\Documents\NetBeansProjects\Stokes
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
