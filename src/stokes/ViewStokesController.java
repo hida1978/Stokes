@@ -81,7 +81,7 @@ public class ViewStokesController implements Initializable {
 //</editor-fold>
 
  
-     DB db = new DB();
+    DB db = new DB();
 
     private final String MENU_CONTACTS = "Felhasználók";
     private final String MENU_LIST = "Lista";
@@ -89,6 +89,13 @@ public class ViewStokesController implements Initializable {
     private final String MENU_ITEMS = "Termékek";    
     private final String MENU_EXIT = "Kilépés";
 
+//    public String inMail = emailLoginInput.getText();
+    
+//    public String Pw = pwLoginInput.getText();    
+    public String logPw = "";
+    public String logEmail = "";    
+
+    
     private final ObservableList<Person> data = FXCollections.observableArrayList();  
     
     
@@ -265,14 +272,17 @@ public class ViewStokesController implements Initializable {
     
     @FXML
     private void loginButton(ActionEvent event) {
-        db.checkPw();
+        logPw = pwLoginInput.getText();
+        logEmail = pwLoginInput.getText();
+//        System.out.println(logPw);
+        db.checkPw(logPw);     
         if (emailLoginInput.getText().equals("1") && pwLoginInput.getText().equals("1")){
             loginPane.setVisible(false);
+            mainSplit.setVisible(true);            
+            contactPane.setVisible(true);  
 //            registerPane.setVisible(false);             
 //            itemPane.setVisible(false);   
-//            exportPane.setVisible(false);   
-            mainSplit.setVisible(true);            
-            contactPane.setVisible(true);               
+//            exportPane.setVisible(false);            
         }
 
     }
@@ -326,9 +336,7 @@ public class ViewStokesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     setTableData();
     setMenuData(); 
-    String p = "cc";
-    db.checkPw();
-//    db.checkPw(p);
+//        db.checkPw();  
 
     }    
     

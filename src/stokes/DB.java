@@ -12,10 +12,13 @@ import java.util.ArrayList;
 
 
 public class DB {
+//    ViewStokesController controller = new ViewStokesController();
     
     final String URL = "jdbc:derby:sampleDB;create=true";
-    final String USERNAME = "";
-    final String PASSWORD = "";
+    public String inpUN = "";
+    public String inpPW = "";
+    public String qryPW = "";    
+    ArrayList login = new ArrayList();
     
     //Létrehozzuk a kapcsolatot (hidat)
     Connection conn = null;
@@ -126,25 +129,35 @@ public class DB {
         }
     }
 
-    public void checkPw() {
+    public void checkPw(String inpPW) {
         try {
+//            ViewStokesController controller = new ViewStokesController(); 
+//            inpPW = controller.logPw;    
+//            inpUN = controller.logEmail;
             String sql = "select * from contacts where password = ?";
-            String pw = "cc";
+
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, pw);  
+            preparedStatement.setString(1, inpPW);  
             
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 String email = rs.getString("email");
                 String password = rs.getString("password");      
                 System.out.println(email + " | " + password);
+                login.add(email);                
+                login.add(password);
             }
-                
+                if (login.size()==2){
+                    System.out.println(login);                    
+                    System.out.println("belépés engedélyezve!");
+                }else{
+                    System.out.println("belépés megtagadva!");                    
+//                    alert("");                    
+                }                
         } catch (SQLException ex) {
             System.out.println("Valami baj van a jelszó ellenörzésekor!");
             System.out.println(""+ex);
         }
-  
     }
-         
+ 
 }
