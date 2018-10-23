@@ -77,6 +77,16 @@ public class ViewStokesController implements Initializable {
     @FXML
     Button registerButton;
     @FXML
+    Button confirmRegisterButton;    
+    @FXML
+    TextField inputLastNameR;
+    @FXML
+    TextField inputFirstNameR;
+    @FXML
+    TextField inputEmailR;
+    @FXML
+    TextField inputPasswordR;    
+    @FXML
     Pane itemPane;
 //</editor-fold>
 
@@ -290,7 +300,29 @@ public class ViewStokesController implements Initializable {
             loginPane.setVisible(false);
             registerPane.setVisible(true);              
     }
-
+    @FXML
+    private void confirmRegisterButton(ActionEvent event) {
+        String email = inputEmailR.getText();
+        if (email.length() > 3 && email.contains("@") && email.contains(".")) {
+            Person newPerson = new Person(inputLastNameR.getText(), inputFirstNameR.getText(), email, inputPasswordR.getText());
+            data.add(newPerson);
+            db.addContact(newPerson);
+//            inputLastNameR.clear();
+//            inputFirstNameR.clear();
+//            inputEmailR.clear();
+//            inputPasswordR.clear();  
+            registerPane.setVisible(false); 
+            loginPane.setVisible(true);
+//            mainSplit.setVisible(true);            
+//            contactPane.setVisible(true);  
+            
+//            itemPane.setVisible(false);   
+//            exportPane.setVisible(false);   
+        }else{
+            alertReg("Adj meg egy valódi e-mail címet!");
+        }
+    } 
+    
     @FXML
     private void addContact(ActionEvent event) {
         String email = inputEmail.getText();
@@ -310,7 +342,7 @@ public class ViewStokesController implements Initializable {
     private void alert(String text) {
         mainSplit.setDisable(true);
         mainSplit.setOpacity(0.4);
-        
+
         Label label = new Label(text);
         Button alertButton = new Button("OK");
         VBox vbox = new VBox(label, alertButton);
@@ -322,6 +354,30 @@ public class ViewStokesController implements Initializable {
                 mainSplit.setDisable(false);
                 mainSplit.setOpacity(1);
                 vbox.setVisible(false);
+            }
+        });
+        
+        anchor.getChildren().add(vbox);
+        anchor.setTopAnchor(vbox, 300.0);
+        anchor.setLeftAnchor(vbox, 300.0);
+    }
+
+    private void alertReg(String text) {
+        registerPane.setDisable(true);            
+        registerPane.setOpacity(0.4);    
+
+        Label label = new Label(text);
+        Button alertButton = new Button("OK");
+        VBox vbox = new VBox(label, alertButton);
+        vbox.setAlignment(Pos.CENTER);
+        
+        alertButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                registerPane.setDisable(false);
+                registerPane.setOpacity(1);
+                vbox.setVisible(false);
+
             }
         });
         

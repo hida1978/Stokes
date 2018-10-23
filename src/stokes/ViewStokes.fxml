@@ -44,7 +44,7 @@
                   <TextField id="inputPasswordR" fx:id="inputPasswordR" layoutX="226.0" layoutY="235.0" />
                </children>
             </VBox>
-            <Button id="confirmRegisterButton" fx:id="confirmRegisterButton" layoutX="441.0" layoutY="362.0" mnemonicParsing="false" onAction="#loginButton" text="Regisztráció" />
+            <Button id="confirmRegisterButton" fx:id="confirmRegisterButton" layoutX="441.0" layoutY="362.0" mnemonicParsing="false" onAction="#confirmRegisterButton" text="Regisztráció" />
             <Label layoutX="330.0" layoutY="141.0" text="A regisztrációhoz add meg az adataidat!">
                <font>
                   <Font size="17.0" />
