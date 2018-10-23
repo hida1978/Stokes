@@ -89,11 +89,10 @@ public class ViewStokesController implements Initializable {
     private final String MENU_ITEMS = "Termékek";    
     private final String MENU_EXIT = "Kilépés";
 
-//    public String inMail = emailLoginInput.getText();
     
-//    public String Pw = pwLoginInput.getText();    
     public String logPw = "";
-    public String logEmail = "";    
+    public String logEmail = ""; 
+    public static boolean grantAccess = false;
 
     
     private final ObservableList<Person> data = FXCollections.observableArrayList();  
@@ -274,9 +273,8 @@ public class ViewStokesController implements Initializable {
     private void loginButton(ActionEvent event) {
         logPw = pwLoginInput.getText();
         logEmail = pwLoginInput.getText();
-//        System.out.println(logPw);
         db.checkPw(logPw);     
-        if (emailLoginInput.getText().equals("1") && pwLoginInput.getText().equals("1")){
+        if (grantAccess == true){
             loginPane.setVisible(false);
             mainSplit.setVisible(true);            
             contactPane.setVisible(true);  
@@ -336,7 +334,6 @@ public class ViewStokesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     setTableData();
     setMenuData(); 
-//        db.checkPw();  
 
     }    
     

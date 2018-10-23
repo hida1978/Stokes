@@ -131,11 +131,7 @@ public class DB {
 
     public void checkPw(String inpPW) {
         try {
-//            ViewStokesController controller = new ViewStokesController(); 
-//            inpPW = controller.logPw;    
-//            inpUN = controller.logEmail;
             String sql = "select * from contacts where password = ?";
-
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, inpPW);  
             
@@ -150,6 +146,7 @@ public class DB {
                 if (login.size()==2){
                     System.out.println(login);                    
                     System.out.println("belépés engedélyezve!");
+                    ViewStokesController.grantAccess = true;
                 }else{
                     System.out.println("belépés megtagadva!");                    
 //                    alert("");                    
