@@ -272,8 +272,8 @@ public class ViewStokesController implements Initializable {
     @FXML
     private void loginButton(ActionEvent event) {
         logPw = pwLoginInput.getText();
-        logEmail = pwLoginInput.getText();
-        db.checkPw(logPw);     
+        logEmail = emailLoginInput.getText();
+        db.checkPw(logPw, logEmail);     
         if (grantAccess == true){
             loginPane.setVisible(false);
             mainSplit.setVisible(true);            

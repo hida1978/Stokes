@@ -129,11 +129,12 @@ public class DB {
         }
     }
 
-    public void checkPw(String inpPW) {
+    public void checkPw(String inpPW, String inpUN) {
         try {
-            String sql = "select * from contacts where password = ?";
+            String sql = "select * from contacts where (password = ? and email = ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, inpPW);  
+            preparedStatement.setString(2, inpUN);  
             
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
