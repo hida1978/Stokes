@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 
 public class DB {
-//    ViewStokesController controller = new ViewStokesController();
     
     final String URL = "jdbc:derby:sampleDB;create=true";
     public String inpUN = "";

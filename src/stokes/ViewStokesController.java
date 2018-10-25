@@ -37,10 +37,24 @@ public class ViewStokesController implements Initializable {
     
 //<editor-fold defaultstate="collapsed" desc="FXML import">
     @FXML
-    TableView itemTable;
+    SplitPane mainSplit;
     @FXML
-    TableView contactTable;
+    AnchorPane anchor;
+// LOGIN PANE
     @FXML
+    Pane loginPane;    
+    @FXML
+    Button loginButton;
+    @FXML
+    TextField emailLoginInput;
+    @FXML
+    TextField pwLoginInput;
+// USER PANE
+    @FXML
+    Pane contactPane;    
+    @FXML
+    TableView contactTable;   
+    @FXML    
     TextField inputLastName;
     @FXML
     TextField inputFirstName;
@@ -49,35 +63,14 @@ public class ViewStokesController implements Initializable {
     @FXML
     TextField inputPassword;
     @FXML
-    Button addNewContactButton;
-    @FXML
-    StackPane menuPane;
-    @FXML
-    Pane contactPane;
-    @FXML
-    Pane exportPane;
-    @FXML
-    SplitPane mainSplit;
-    @FXML
-    AnchorPane anchor;
-    @FXML
-    TextField inputExportName;
-    @FXML
-    Button exportButton;
-    @FXML
-    Button loginButton;
-    @FXML
-    TextField emailLoginInput;
-    @FXML
-    TextField pwLoginInput;
-    @FXML
-    Pane loginPane;
+    Button addNewContactButton;    
+//REGISTER PANE
     @FXML
     Pane registerPane;
     @FXML
     Button registerButton;
     @FXML
-    Button confirmRegisterButton;    
+    Button confirmRegisterButton;     
     @FXML
     TextField inputLastNameR;
     @FXML
@@ -85,13 +78,39 @@ public class ViewStokesController implements Initializable {
     @FXML
     TextField inputEmailR;
     @FXML
-    TextField inputPasswordR;    
+    TextField inputPasswordR;       
+// ITEM PANE
     @FXML
-    Pane itemPane;
+    TableView itemTable;
+    @FXML
+    Pane itemPane;  
+    @FXML    
+    TextField inputItemName;
+    @FXML
+    TextField inputItemDescription;
+    @FXML
+    TextField inputItemQuantity;
+    @FXML
+    Button addNewItemButton;
+    @FXML
+    TextField inputSomething;
+   
+//EXPORT PANE    
+    @FXML
+    Pane exportPane;
+    @FXML
+    TextField inputExportName;
+    @FXML
+    Button exportButton;
+// MENU PANE    
+    @FXML
+    StackPane menuPane;
+
 //</editor-fold>
 
  
     DB db = new DB();
+    DBItem dbItem = new DBItem();
 
     private final String MENU_CONTACTS = "Felhasználók";
     private final String MENU_LIST = "Lista";
@@ -106,7 +125,7 @@ public class ViewStokesController implements Initializable {
 
     
     private final ObservableList<Person> data = FXCollections.observableArrayList();  
-    
+    private final ObservableList<Item> dataItem = FXCollections.observableArrayList(new Item ("saher torta", "a", "a", "a"));     
     
     public void setTableData() {
         TableColumn lastNameCol = new TableColumn("Vezetéknév");
@@ -218,6 +237,116 @@ public class ViewStokesController implements Initializable {
         contactTable.setItems(data);
     }
 
+    public void setItemTableData() {
+        TableColumn nameCol = new TableColumn("Termék");
+        nameCol.setMinWidth(130);
+        nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nameCol.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+
+        nameCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Item, String> t) {
+                Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                actualItem.setName(t.getNewValue());
+                dbItem.updateItem(actualItem);
+            }
+        }
+        );
+
+        TableColumn descriptionCol = new TableColumn("Leírás");
+        descriptionCol.setMinWidth(200);
+        descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
+
+        descriptionCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Item, String> t) {
+                Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                actualItem.setDescription(t.getNewValue());
+                dbItem.updateItem(actualItem);
+            }
+        }
+        );
+
+        TableColumn quantityCol = new TableColumn("Mennyiség");
+        quantityCol.setMinWidth(20);
+        quantityCol.setCellValueFactory(new PropertyValueFactory<Item, String>("quantity"));
+        quantityCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        quantityCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Item, String> t) {
+                Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                actualItem.setQuantity(t.getNewValue());
+                dbItem.updateItem(actualItem);
+            }
+        }
+        );
+        
+        TableColumn somethingCol = new TableColumn("Egyéb");
+        somethingCol.setMinWidth(50);
+        somethingCol.setCellValueFactory(new PropertyValueFactory<Item, String>("passWord"));
+        somethingCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        somethingCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Item, String> t) {
+                Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                actualItem.setPassWord(t.getNewValue());
+                dbItem.updateItem(actualItem);
+            }
+        }
+        );
+        
+        TableColumn removeCol = new TableColumn( "Törlés" );
+        removeCol.setMinWidth(100);
+
+        Callback<TableColumn<Item, String>, TableCell<Item, String>> cellFactory = 
+                new Callback<TableColumn<Item, String>, TableCell<Item, String>>()
+                {
+                    @Override
+                    public TableCell call( final TableColumn<Item, String> param )
+                    {
+                        final TableCell<Item, String> cell = new TableCell<Item, String>()
+                        {   
+                            final Button btn = new Button( "Törlés" );
+
+                            @Override
+                            public void updateItem( String item, boolean empty )
+                            {
+                                super.updateItem( item, empty );
+                                if ( empty )
+                                {
+                                    setGraphic( null );
+                                    setText( null );
+                                }
+                                else
+                                {
+                                    btn.setOnAction( ( ActionEvent event ) ->
+                                            {
+                                                Item item1 = getTableView().getItems().get( getIndex() );
+                                                dataItem.remove(item1);
+                                                dbItem.removeItem(item1);
+                                       } );
+                                    setGraphic( btn );
+                                    setText( null );
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+
+        removeCol.setCellFactory( cellFactory );
+        itemTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, somethingCol, removeCol);
+        dataItem.addAll(dbItem.getAllItems());
+        itemTable.setItems(dataItem);
+    }
+    
     private void setMenuData() {
         TreeItem<String> treeItemRoot1 = new TreeItem<>("Menü");
         TreeView<String> treeView = new TreeView<>(treeItemRoot1);
@@ -300,6 +429,7 @@ public class ViewStokesController implements Initializable {
             loginPane.setVisible(false);
             registerPane.setVisible(true);              
     }
+    
     @FXML
     private void confirmRegisterButton(ActionEvent event) {
         String email = inputEmailR.getText();
@@ -307,17 +437,9 @@ public class ViewStokesController implements Initializable {
             Person newPerson = new Person(inputLastNameR.getText(), inputFirstNameR.getText(), email, inputPasswordR.getText());
             data.add(newPerson);
             db.addContact(newPerson);
-//            inputLastNameR.clear();
-//            inputFirstNameR.clear();
-//            inputEmailR.clear();
-//            inputPasswordR.clear();  
             registerPane.setVisible(false); 
             loginPane.setVisible(true);
-//            mainSplit.setVisible(true);            
-//            contactPane.setVisible(true);  
-            
-//            itemPane.setVisible(false);   
-//            exportPane.setVisible(false);   
+  
         }else{
             alertReg("Adj meg egy valódi e-mail címet!");
         }
@@ -338,6 +460,17 @@ public class ViewStokesController implements Initializable {
             alert("Adj meg egy valódi e-mail címet!");
         }
     }    
+
+    @FXML
+    private void addNewItem(ActionEvent event) {
+            Item newItem = new Item(inputItemName.getText(), inputItemDescription.getText(), inputItemQuantity.getText(), inputSomething.getText());
+            dataItem.add(newItem);
+            dbItem.addItem(newItem);
+            inputItemName.clear();
+            inputItemDescription.clear();
+            inputItemQuantity.clear();
+            inputSomething.clear();            
+    } 
     
     private void alert(String text) {
         mainSplit.setDisable(true);
@@ -389,7 +522,9 @@ public class ViewStokesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     setTableData();
+    setItemTableData();    
     setMenuData(); 
+   
 
     }    
     
