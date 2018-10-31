@@ -56,7 +56,7 @@ public class DBItem {
             ResultSet rs = dbmd.getTables(null, "APP", "ITEMS", null);
             if(!rs.next())
             { 
-             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(25), quantity varchar(5), something varchar(15))");
+             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(35), quantity varchar(3), something varchar(15))");
             }
         } catch (SQLException ex) {
             System.out.println("Valami baj van az adattáblák létrehozásakor.");

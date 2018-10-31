@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Wed Oct 31 10:42:17 CET 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0166-c980-8e95-0000067522e8 
+Wed Oct 31 11:26:16 CET 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0166-c9a8-d330-0000067555c8 
 on database directory C:\Users\Gergo\Documents\NetBeansProjects\Stokes\sampleDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
-Loaded from file:/C:/Users/Gergo/Documents/NetBeansProjects/Stokes/dist/run1679385214/lib/derby.jar
+Loaded from file:/C:/Users/Gergo/Documents/NetBeansProjects/Stokes/dist/run1288426804/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_171-b11
 user.dir=C:\Users\Gergo\Documents\NetBeansProjects\Stokes
