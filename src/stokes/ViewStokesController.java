@@ -1,6 +1,7 @@
 
 package stokes;
 
+import java.awt.Checkbox;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -286,8 +287,8 @@ public class ViewStokesController implements Initializable {
         }
         );
         
-        TableColumn somethingCol = new TableColumn("Egyéb");
-        somethingCol.setMinWidth(50);
+        TableColumn somethingCol = new TableColumn("Valami");
+        somethingCol.setMinWidth(10);
         somethingCol.setCellValueFactory(new PropertyValueFactory<Item, String>("something"));
         somethingCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -296,11 +297,17 @@ public class ViewStokesController implements Initializable {
             @Override
             public void handle(TableColumn.CellEditEvent<Item, String> t) {
                 Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
-                actualItem.setSomething(t.getNewValue());
+                actualItem.setQuantity(t.getNewValue());
                 dbItem.updateItem(actualItem);
             }
         }
         );
+        
+        TableColumn selectCol = new TableColumn("Kiválasztás");
+        selectCol.setMinWidth(20);
+        selectCol.setCellValueFactory(new PropertyValueFactory<Item, String>("select"));
+//        selectCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         
         TableColumn removeCol = new TableColumn( "Törlés" );
         removeCol.setMinWidth(100);
@@ -342,7 +349,8 @@ public class ViewStokesController implements Initializable {
                 };
 
         removeCol.setCellFactory( cellFactory );
-        itemTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, somethingCol, removeCol);
+        
+        itemTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, somethingCol, selectCol, removeCol);
         dataItem.addAll(dbItem.getAllItems());
         itemTable.setItems(dataItem);
     }

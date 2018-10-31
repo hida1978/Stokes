@@ -2,6 +2,7 @@
 package stokes;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
 
 public class Item {
     
@@ -10,6 +11,7 @@ public class Item {
     private final SimpleStringProperty quantity;
     private final SimpleStringProperty something;    
     private final SimpleStringProperty id;
+    private CheckBox select;
     
     public Item() {
         this.name = new SimpleStringProperty("");
@@ -17,6 +19,7 @@ public class Item {
         this.quantity = new SimpleStringProperty("");
         this.something = new SimpleStringProperty("");        
         this.id = new SimpleStringProperty("");
+        this.select = new CheckBox();        
     }
  
     public Item(String name, String descr, String quant, String something) {
@@ -25,6 +28,7 @@ public class Item {
         this.quantity = new SimpleStringProperty(quant);
         this.something = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty("");
+        this.select = new CheckBox();
     }
     
     public Item(Integer id, String name, String descr, String quant, String something) {
@@ -33,6 +37,7 @@ public class Item {
         this.quantity = new SimpleStringProperty(quant);
         this.something = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty(String.valueOf(id));
+        this.select = new CheckBox();        
     }
     
     public String getName() {
@@ -64,10 +69,17 @@ public class Item {
         id.set(fId);
     }
 
-    public String getSomething() {
+    public String getSomething(){
         return something.get();
     }
-    public void setSomething(String fName) {
+    public void setSomething(String fName){
         something.set(fName);
-    }        
+    }  
+    
+    public CheckBox getSelect() {
+        return select;
+    }
+    public void setSelect(CheckBox select){
+        this.select = select;
+    }      
 }
