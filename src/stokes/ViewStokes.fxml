@@ -118,8 +118,8 @@
                   <VBox layoutX="234.0" layoutY="563.0" spacing="8.0">
                      <children>
                         <TextField id="inputItemName" fx:id="inputItemName" layoutX="226.0" layoutY="130.0" />
-                        <TextField id="inputDescription" fx:id="inputDescription" layoutX="226.0" layoutY="165.0" />
-                        <TextField id="inputQuantity" fx:id="inputQuantity" layoutX="226.0" layoutY="200.0" />
+                        <TextField id="inputItemDescription" fx:id="inputItemDescription" layoutX="226.0" layoutY="165.0" />
+                        <TextField id="inputItemQuantity" fx:id="inputItemQuantity" layoutX="226.0" layoutY="200.0" />
                         <TextField id="inputSomething" fx:id="inputSomething" layoutX="226.0" layoutY="235.0" />
                      </children>
                   </VBox>

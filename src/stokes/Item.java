@@ -8,30 +8,30 @@ public class Item {
     private final SimpleStringProperty name;
     private final SimpleStringProperty description;
     private final SimpleStringProperty quantity;
-    private final SimpleStringProperty passWord;    
+    private final SimpleStringProperty something;    
     private final SimpleStringProperty id;
     
     public Item() {
         this.name = new SimpleStringProperty("");
         this.description = new SimpleStringProperty("");
         this.quantity = new SimpleStringProperty("");
-        this.passWord = new SimpleStringProperty("");        
+        this.something = new SimpleStringProperty("");        
         this.id = new SimpleStringProperty("");
     }
  
-    public Item(String name, String descr, String quant, String pWord) {
+    public Item(String name, String descr, String quant, String something) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(descr);
         this.quantity = new SimpleStringProperty(quant);
-        this.passWord = new SimpleStringProperty(pWord);        
+        this.something = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty("");
     }
     
-    public Item(Integer id, String name, String descr, String quant, String pWord) {
+    public Item(Integer id, String name, String descr, String quant, String something) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(descr);
         this.quantity = new SimpleStringProperty(quant);
-        this.passWord = new SimpleStringProperty(pWord);        
+        this.something = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty(String.valueOf(id));
     }
     
@@ -64,10 +64,10 @@ public class Item {
         id.set(fId);
     }
 
-    public String getPassWord() {
-        return passWord.get();
+    public String getSomething() {
+        return something.get();
     }
-    public void setPassWord(String fName) {
-        passWord.set(fName);
+    public void setSomething(String fName) {
+        something.set(fName);
     }        
 }

@@ -288,7 +288,7 @@ public class ViewStokesController implements Initializable {
         
         TableColumn somethingCol = new TableColumn("Egyéb");
         somethingCol.setMinWidth(50);
-        somethingCol.setCellValueFactory(new PropertyValueFactory<Item, String>("passWord"));
+        somethingCol.setCellValueFactory(new PropertyValueFactory<Item, String>("something"));
         somethingCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         somethingCol.setOnEditCommit(
@@ -296,7 +296,7 @@ public class ViewStokesController implements Initializable {
             @Override
             public void handle(TableColumn.CellEditEvent<Item, String> t) {
                 Item actualItem = (Item) t.getTableView().getItems().get(t.getTablePosition().getRow());
-                actualItem.setPassWord(t.getNewValue());
+                actualItem.setSomething(t.getNewValue());
                 dbItem.updateItem(actualItem);
             }
         }

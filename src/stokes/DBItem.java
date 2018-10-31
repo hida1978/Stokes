@@ -56,7 +56,7 @@ public class DBItem {
             ResultSet rs = dbmd.getTables(null, "APP", "ITEMS", null);
             if(!rs.next())
             { 
-             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(25), quantity varchar(5), password varchar(15))");
+             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(25), quantity varchar(5), something varchar(15))");
             }
         } catch (SQLException ex) {
             System.out.println("Valami baj van az adattáblák létrehozásakor.");
@@ -73,7 +73,7 @@ public class DBItem {
             items = new ArrayList<>();
             
             while (rs.next()){
-                Item actualItem = new Item(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getString("quantity"), rs.getString("password"));
+                Item actualItem = new Item(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getString("quantity"), rs.getString("something"));
                 items.add(actualItem);
             }
         } catch (SQLException ex) {
@@ -85,12 +85,12 @@ public class DBItem {
     
     public void addItem(Item item){
       try {
-        String sql = "insert into items (name, description, quantity, password) values (?,?,?,?)";
+        String sql = "insert into items (name, description, quantity, something) values (?,?,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setString(1, item.getName());
         preparedStatement.setString(2, item.getDescription());
         preparedStatement.setString(3, item.getQuantity());
-        preparedStatement.setString(4, item.getPassWord());        
+        preparedStatement.setString(4, item.getSomething());        
         preparedStatement.execute();
         } catch (SQLException ex) {
             System.out.println("Valami baj van a termék hozzáadásakor");
@@ -100,12 +100,12 @@ public class DBItem {
     
     public void updateItem(Item item){
       try {
-            String sql = "update items set name = ?, description = ?, quantity = ?, password = ? where id = ?";
+            String sql = "update items set name = ?, description = ?, quantity = ?, something = ? where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, item.getName());
             preparedStatement.setString(2, item.getDescription());
             preparedStatement.setString(3, item.getQuantity());
-            preparedStatement.setString(4, item.getPassWord());                
+            preparedStatement.setString(4, item.getSomething());                
             preparedStatement.setInt(5, Integer.parseInt(item.getId()));
          
             preparedStatement.execute();
