@@ -139,12 +139,12 @@ public class DB {
             while (rs.next()){
                 String email = rs.getString("email");
                 String password = rs.getString("password");      
-                System.out.println(email + " | " + password);
+//                System.out.println(email + " | " + password);
                 login.add(email);                
                 login.add(password);
             }
                 if (login.size()==2){
-                    System.out.println(login);                    
+//                    System.out.println(login);                    
                     System.out.println("belépés engedélyezve!");
                     ViewStokesController.grantAccess = true;
                 }else{

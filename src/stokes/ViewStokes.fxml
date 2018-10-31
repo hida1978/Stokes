@@ -9,7 +9,7 @@
 
 <AnchorPane id="anchor" fx:id="anchor" prefHeight="700.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
    <children>
-      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="230.0" layoutY="129.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
                <font>
@@ -51,7 +51,7 @@
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.1935483870967742" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.1935483870967742" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -97,33 +97,33 @@
                         <Text layoutX="222.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adj meg egy fájl nevet!" />
                         <Button id="eportButton" fx:id="eportButton" layoutX="244.0" layoutY="301.0" mnemonicParsing="false" text="Export" />
                      </children></Pane>
-                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="670.0">
                           <placeholder>
                             <Label text="Nincs adat." />
                           </placeholder>
                         </TableView>
+                        <VBox layoutX="261.0" layoutY="551.0" spacing="8.0">
+                           <children>
+                              <TextField id="inputItemName" fx:id="inputItemName" layoutX="226.0" layoutY="130.0" />
+                              <TextField id="inputItemDescription" fx:id="inputItemDescription" layoutX="226.0" layoutY="165.0" />
+                              <TextField id="inputItemQuantity" fx:id="inputItemQuantity" layoutX="226.0" layoutY="200.0" />
+                              <TextField id="inputSomething" fx:id="inputSomething" layoutX="226.0" layoutY="235.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" layoutX="186.0" layoutY="555.0" spacing="16.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="Terméknév:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="Leírás:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="204.0" text="Menyniség:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="egyéb:" />
+                           </children>
+                        </VBox>
+                        <Button id="addNewItemButton" fx:id="addNewItemButton" layoutX="434.0" layoutY="588.0" mnemonicParsing="false" onAction="#addNewItem" text="Termék hozzáadása" />
                         <Text layoutX="39.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="itempane" />
                      </children>
                   </Pane>
-                  <VBox alignment="CENTER_RIGHT" layoutX="152.0" layoutY="567.0" spacing="16.0">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="Terméknév:" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="Leírás:" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="204.0" text="Menyniség:" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="egyéb:" />
-                     </children>
-                  </VBox>
-                  <VBox layoutX="234.0" layoutY="563.0" spacing="8.0">
-                     <children>
-                        <TextField id="inputItemName" fx:id="inputItemName" layoutX="226.0" layoutY="130.0" />
-                        <TextField id="inputItemDescription" fx:id="inputItemDescription" layoutX="226.0" layoutY="165.0" />
-                        <TextField id="inputItemQuantity" fx:id="inputItemQuantity" layoutX="226.0" layoutY="200.0" />
-                        <TextField id="inputSomething" fx:id="inputSomething" layoutX="226.0" layoutY="235.0" />
-                     </children>
-                  </VBox>
-                  <Button id="addNewItemButton" fx:id="addNewItemButton" layoutX="417.0" layoutY="613.0" mnemonicParsing="false" onAction="#addNewItem" text="Termék hozzáadása" />
                </children>
             </AnchorPane>
          </items>

@@ -112,8 +112,8 @@ public class ViewStokesController implements Initializable {
     DB db = new DB();
     DBItem dbItem = new DBItem();
 
-    private final String MENU_CONTACTS = "Felhasználók";
-    private final String MENU_LIST = "Lista";
+    private final String MENU_USERS = "Felhasználók";
+    private final String MENU_LIST = "Felhasználók listája";
     private final String MENU_EXPORT = "Exportálás";
     private final String MENU_ITEMS = "Termékek";    
     private final String MENU_EXIT = "Kilépés";
@@ -352,20 +352,22 @@ public class ViewStokesController implements Initializable {
         TreeView<String> treeView = new TreeView<>(treeItemRoot1);
         treeView.setShowRoot(false);
 
-        TreeItem<String> nodeItemA = new TreeItem<>(MENU_CONTACTS);
+        TreeItem<String> nodeItemA = new TreeItem<>(MENU_USERS);
         TreeItem<String> nodeItemB = new TreeItem<>(MENU_ITEMS);              
         TreeItem<String> nodeItemC = new TreeItem<>(MENU_EXIT);
   
-
         nodeItemA.setExpanded(true);
         nodeItemB.setExpanded(true);        
 
         Node contactsNode = new ImageView(new Image(getClass().getResourceAsStream("/contacts.png")));
         Node exportNode = new ImageView(new Image(getClass().getResourceAsStream("/export.png")));
+        Node cakeNode = new ImageView(new Image(getClass().getResourceAsStream("/cake.png")));        
         TreeItem<String> nodeItemA1 = new TreeItem<>(MENU_LIST, contactsNode);
         TreeItem<String> nodeItemA2 = new TreeItem<>(MENU_EXPORT, exportNode);
-
+        TreeItem<String> nodeItemB1 = new TreeItem<>(MENU_ITEMS, cakeNode);       
+        
         nodeItemA.getChildren().addAll(nodeItemA1, nodeItemA2);
+        nodeItemB.getChildren().addAll(nodeItemB1);        
         treeItemRoot1.getChildren().addAll(nodeItemA, nodeItemB, nodeItemC);
 
         menuPane.getChildren().add(treeView);
@@ -378,7 +380,7 @@ public class ViewStokesController implements Initializable {
 
                 if (null != selectedMenu) {
                     switch (selectedMenu) {
-                        case MENU_CONTACTS:
+                        case MENU_USERS:
                             selectedItem.setExpanded(true);
                             break;
                         case MENU_LIST:
@@ -416,9 +418,9 @@ public class ViewStokesController implements Initializable {
         if (grantAccess == true){
             loginPane.setVisible(false);
             mainSplit.setVisible(true);            
-            contactPane.setVisible(true);  
+//            contactPane.setVisible(true);  
 //            registerPane.setVisible(false);             
-//            itemPane.setVisible(false);   
+            itemPane.setVisible(true);   
 //            exportPane.setVisible(false);            
         }
 

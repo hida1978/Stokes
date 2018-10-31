@@ -28,7 +28,7 @@ public class DBItem {
         //Megpróbáljuk életre kelteni
         try {
             conn = DriverManager.getConnection(URL);
-            System.out.println("A híd létrejött");
+            System.out.println("A híd a termékellel létrejött");
         } catch (SQLException ex) {
             System.out.println("Valami baj van a connection (híd) létrehozásakor.");
             System.out.println(""+ex);
@@ -39,7 +39,7 @@ public class DBItem {
             try {
                 createStatement = conn.createStatement();
             } catch (SQLException ex) {
-                System.out.println("Valami baj van van a createStatament (teherautó) létrehozásakor.");
+                System.out.println("Valami baj van van a termék createStatament létrehozásakor.");
                 System.out.println(""+ex);
             }
         }
@@ -48,7 +48,7 @@ public class DBItem {
         try {           
             dbmd = conn.getMetaData();
         } catch (SQLException ex) {
-            System.out.println("Valami baj van a DatabaseMetaData (adatbázis leírása) létrehozásakor..");
+            System.out.println("Valami baj van a termék DatabaseMetaData (adatbázis leírása) létrehozásakor..");
             System.out.println(""+ex);
         }
         
@@ -56,10 +56,10 @@ public class DBItem {
             ResultSet rs = dbmd.getTables(null, "APP", "ITEMS", null);
             if(!rs.next())
             { 
-             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(35), quantity varchar(3), something varchar(15))");
+             createStatement.execute("create table items(id INT not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), name varchar(15), description varchar(60), quantity varchar(3), something varchar(15))");
             }
         } catch (SQLException ex) {
-            System.out.println("Valami baj van az adattáblák létrehozásakor.");
+            System.out.println("Valami baj van a termék adattáblák létrehozásakor.");
             System.out.println(""+ex);
         }       
     }
