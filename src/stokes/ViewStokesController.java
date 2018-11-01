@@ -95,6 +95,8 @@ public class ViewStokesController implements Initializable {
     Button addNewItemButton;
     @FXML
     TextField inputSomething;
+    @FXML
+    Button delItemButton;
    
 //EXPORT PANE    
     @FXML
@@ -287,12 +289,12 @@ public class ViewStokesController implements Initializable {
         }
         );
         
-        TableColumn somethingCol = new TableColumn("Valami");
-        somethingCol.setMinWidth(10);
-        somethingCol.setCellValueFactory(new PropertyValueFactory<Item, String>("something"));
-        somethingCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        TableColumn priceCol = new TableColumn("Ár");
+        priceCol.setMinWidth(30);
+        priceCol.setCellValueFactory(new PropertyValueFactory<Item, String>("price"));
+        priceCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        somethingCol.setOnEditCommit(
+        priceCol.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Item, String> t) {
@@ -350,7 +352,7 @@ public class ViewStokesController implements Initializable {
 
         removeCol.setCellFactory( cellFactory );
         
-        itemTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, somethingCol, selectCol, removeCol);
+        itemTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, priceCol, selectCol, removeCol);
         dataItem.addAll(dbItem.getAllItems());
         itemTable.setItems(dataItem);
     }
@@ -481,6 +483,18 @@ public class ViewStokesController implements Initializable {
             inputItemQuantity.clear();
             inputSomething.clear();            
     } 
+
+     @FXML
+    private void delItemButton(ActionEvent event) {
+            ObservableList<Item> itemDataListRemove = FXCollections.observableArrayList();  
+            for(Item bean : dataItem){
+                if (bean.getSelect().isSelected()){
+                    itemDataListRemove.add(bean);
+                }
+            }
+            dataItem.removeAll(itemDataListRemove);
+                   
+    }   
     
     private void alert(String text) {
         mainSplit.setDisable(true);

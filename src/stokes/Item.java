@@ -9,7 +9,7 @@ public class Item {
     private final SimpleStringProperty name;
     private final SimpleStringProperty description;
     private final SimpleStringProperty quantity;
-    private final SimpleStringProperty something;    
+    private final SimpleStringProperty price;    
     private final SimpleStringProperty id;
     private CheckBox select;
     
@@ -17,7 +17,7 @@ public class Item {
         this.name = new SimpleStringProperty("");
         this.description = new SimpleStringProperty("");
         this.quantity = new SimpleStringProperty("");
-        this.something = new SimpleStringProperty("");        
+        this.price = new SimpleStringProperty("");        
         this.id = new SimpleStringProperty("");
         this.select = new CheckBox();        
     }
@@ -26,7 +26,7 @@ public class Item {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(descr);
         this.quantity = new SimpleStringProperty(quant);
-        this.something = new SimpleStringProperty(something);        
+        this.price = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty("");
         this.select = new CheckBox();
     }
@@ -35,7 +35,7 @@ public class Item {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(descr);
         this.quantity = new SimpleStringProperty(quant);
-        this.something = new SimpleStringProperty(something);        
+        this.price = new SimpleStringProperty(something);        
         this.id = new SimpleStringProperty(String.valueOf(id));
         this.select = new CheckBox();        
     }
@@ -69,11 +69,11 @@ public class Item {
         id.set(fId);
     }
 
-    public String getSomething(){
-        return something.get();
+    public String getPrice(){
+        return price.get();
     }
-    public void setSomething(String fName){
-        something.set(fName);
+    public void setPrice(String fName){
+        price.set(fName);
     }  
     
     public CheckBox getSelect() {
