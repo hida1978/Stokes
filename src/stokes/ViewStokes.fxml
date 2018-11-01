@@ -9,7 +9,7 @@
 
 <AnchorPane id="anchor" fx:id="anchor" prefHeight="700.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stokes.ViewStokesController">
    <children>
-      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="loginPane" fx:id="loginPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="230.0" layoutY="129.0" text="Üdvözöllek a Stokes Süteménytársaság Oldalán!">
                <font>
@@ -51,7 +51,7 @@
                </font>
             </Label>
          </children></Pane>
-      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.1935483870967742" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane id="mainSplit" fx:id="mainSplit" dividerPositions="0.1935483870967742" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -97,7 +97,7 @@
                         <Text layoutX="222.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adj meg egy fájl nevet!" />
                         <Button id="eportButton" fx:id="eportButton" layoutX="244.0" layoutY="301.0" mnemonicParsing="false" text="Export" />
                      </children></Pane>
-                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane id="itemPane" fx:id="itemPane" prefHeight="398.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView id="itemTable" fx:id="itemTable" editable="true" prefHeight="540.0" prefWidth="670.0">
                           <placeholder>
@@ -120,9 +120,42 @@
                               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="egyéb:" />
                            </children>
                         </VBox>
-                        <Button id="addNewItemButton" fx:id="addNewItemButton" layoutX="434.0" layoutY="588.0" mnemonicParsing="false" onAction="#addNewItem" text="Termék hozzáadása" />
+                        <Button id="addNewItemButton" fx:id="addNewItemButton" layoutX="39.0" layoutY="625.0" mnemonicParsing="false" onAction="#addNewItem" text="Termék hozzáadása" />
                         <Text layoutX="39.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="itempane" />
-                        <Button id="delItemButton" fx:id="delItemButton" onAction="#delItemButton" layoutX="64.0" layoutY="588.0" mnemonicParsing="false" text="Termék törlése" />
+                        <Button id="delItemButton" fx:id="delItemButton" layoutX="64.0" layoutY="588.0" mnemonicParsing="false" onAction="#delItemButton" text="Termék törlése" />
+                        <Button id="selectItemButton" fx:id="delItemButton1" layoutX="469.0" layoutY="601.0" mnemonicParsing="false" onAction="#selectItemButton" text="Termék kiválasztása" />
+                     </children>
+                  </Pane>
+                  <Pane id="selectedPane" fx:id="selectedPane" layoutX="10.0" layoutY="10.0" prefHeight="698.0" prefWidth="697.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView id="selectedTable" fx:id="selectedTable" editable="true" layoutX="1.0" layoutY="76.0" prefHeight="323.0" prefWidth="670.0">
+                           <placeholder>
+                              <Label text="Nincs adat." />
+                           </placeholder>
+                        </TableView>
+                        <VBox layoutX="223.0" layoutY="443.0" prefHeight="145.0" prefWidth="301.0" spacing="8.0">
+                           <children>
+                              <TextField id="orderName" fx:id="orderName" layoutX="226.0" layoutY="130.0" />
+                              <TextField id="orderAddress" fx:id="orderAddress" layoutX="226.0" layoutY="165.0" />
+                              <TextField id="orderPrice" fx:id="orderPrice" layoutX="226.0" layoutY="200.0" />
+                              <TextField id="orderNote" fx:id="orderNote" layoutX="226.0" layoutY="235.0" prefHeight="46.0" prefWidth="301.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" layoutX="110.0" layoutY="447.0" spacing="16.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="134.0" text="A megrendelő neve:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="169.0" text="A megrendelő címe:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="155.0" layoutY="204.0" text="Fizetendő összeg:" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="180.0" layoutY="239.0" text="Megjegyzés:" />
+                           </children>
+                        </VBox>
+                        <Button id="confirmSelectButton" fx:id="confirmSelectButton" layoutX="307.0" layoutY="608.0" mnemonicParsing="false" onAction="#confirmSelectButton" text="Vásárlás véglegesítése" />
+                        <Text layoutX="37.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="selected pane" />
+                        <Text layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ezeket a termékeket vásároltad:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
                      </children>
                   </Pane>
                </children>

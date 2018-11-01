@@ -97,7 +97,23 @@ public class ViewStokesController implements Initializable {
     TextField inputSomething;
     @FXML
     Button delItemButton;
-   
+    @FXML
+    Button selectlItemButton;    
+//SELECTED PANE  
+    @FXML
+    Pane selectedPane;    
+    @FXML
+    TableView selectedTable;   
+    @FXML
+    Button confirmSelectButton;
+    @FXML
+    TextField orderName;   
+    @FXML
+    TextField orderAddress;  
+    @FXML
+    TextField orderPrice;  
+    @FXML
+    TextField orderNote;      
 //EXPORT PANE    
     @FXML
     Pane exportPane;
@@ -128,8 +144,10 @@ public class ViewStokesController implements Initializable {
 
     
     private final ObservableList<Person> data = FXCollections.observableArrayList();  
-    private final ObservableList<Item> dataItem = FXCollections.observableArrayList(new Item ("saher torta", "a", "a", "a"));     
-    
+    private final ObservableList<Item> dataItem = FXCollections.observableArrayList(new Item ("saher torta", "csokis piskóta baracklekvárral bolondítva", "1", "3000"));     
+    private final ObservableList<Item> itemDataListSelected = FXCollections.observableArrayList();      
+
+// *****TABLES SETUP ***********************************************************       
     public void setTableData() {
         TableColumn lastNameCol = new TableColumn("Vezetéknév");
         lastNameCol.setMinWidth(130);
@@ -258,7 +276,7 @@ public class ViewStokesController implements Initializable {
         );
 
         TableColumn descriptionCol = new TableColumn("Leírás");
-        descriptionCol.setMinWidth(200);
+        descriptionCol.setMinWidth(250);
         descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
         descriptionCol.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
 
@@ -356,7 +374,33 @@ public class ViewStokesController implements Initializable {
         dataItem.addAll(dbItem.getAllItems());
         itemTable.setItems(dataItem);
     }
-    
+
+    public void setSelectedItemTableData() {
+        TableColumn nameCol = new TableColumn("Termék");
+        nameCol.setMinWidth(130);
+        nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nameCol.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+
+        TableColumn descriptionCol = new TableColumn("Leírás");
+        descriptionCol.setMinWidth(200);
+        descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
+
+        TableColumn quantityCol = new TableColumn("Mennyiség");
+        quantityCol.setMinWidth(20);
+        quantityCol.setCellValueFactory(new PropertyValueFactory<Item, String>("quantity"));
+        quantityCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        TableColumn priceCol = new TableColumn("Ár");
+        priceCol.setMinWidth(30);
+        priceCol.setCellValueFactory(new PropertyValueFactory<Item, String>("price"));
+        priceCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        selectedTable.getColumns().addAll(nameCol, descriptionCol, quantityCol, priceCol);
+        selectedTable.setItems(itemDataListSelected);
+    }
+ 
+// *****MENU SETUP ************************************************************* 
     private void setMenuData() {
         TreeItem<String> treeItemRoot1 = new TreeItem<>("Menü");
         TreeView<String> treeView = new TreeView<>(treeItemRoot1);
@@ -396,16 +440,19 @@ public class ViewStokesController implements Initializable {
                         case MENU_LIST:
                             contactPane.setVisible(true);
                             exportPane.setVisible(false);
-                            itemPane.setVisible(false);                            
+                            itemPane.setVisible(false);  
+                            selectedPane.setVisible(false);                             
                             break;
                         case MENU_EXPORT:
                             contactPane.setVisible(false);
                             exportPane.setVisible(true);                            
                             itemPane.setVisible(false);
+                            selectedPane.setVisible(false);                             
                             break;
                         case MENU_ITEMS:
                             contactPane.setVisible(false);
-                            exportPane.setVisible(false);                            
+                            exportPane.setVisible(false); 
+                            selectedPane.setVisible(false);                             
                             itemPane.setVisible(true);
                             break;                            
                         case MENU_EXIT:
@@ -419,7 +466,7 @@ public class ViewStokesController implements Initializable {
 
     }
 
-    
+// *****BUTTON ACTIONS *********************************************************    
     @FXML
     private void loginButton(ActionEvent event) {
         logPw = pwLoginInput.getText();
@@ -433,7 +480,6 @@ public class ViewStokesController implements Initializable {
             itemPane.setVisible(true);   
 //            exportPane.setVisible(false);            
         }
-
     }
 
     @FXML
@@ -486,15 +532,37 @@ public class ViewStokesController implements Initializable {
 
      @FXML
     private void delItemButton(ActionEvent event) {
-            ObservableList<Item> itemDataListRemove = FXCollections.observableArrayList();  
+//            ObservableList<Item> itemDataListRemove = FXCollections.observableArrayList();  
             for(Item bean : dataItem){
                 if (bean.getSelect().isSelected()){
-                    itemDataListRemove.add(bean);
+                    itemDataListSelected.add(bean);
                 }
             }
-            dataItem.removeAll(itemDataListRemove);
-                   
+            dataItem.removeAll(itemDataListSelected);
     }   
+
+     @FXML
+    private void selectItemButton(ActionEvent event) {
+//            ObservableList<Item> itemDataListSelected = FXCollections.observableArrayList();  
+            for(Item bean : dataItem){
+                if (bean.getSelect().isSelected()){
+                    itemDataListSelected.add(bean);
+                }
+            }
+            setSelectedItemTableData();
+            loginPane.setVisible(false);
+            itemPane.setVisible(false);   
+            selectedPane.setVisible(true);  
+        orderName.setText("Gizi");
+        orderAddress.setText("1186 Elm utca 66.");
+        orderPrice.setText("1 000 000 $");        
+    }   
+
+     @FXML
+    private void confirmSelectButton(ActionEvent event) {
+        alert("A Stokes Süteménytársaság mindíg az ön szolgálatában áll asszonyom!!");
+          
+    } 
     
     private void alert(String text) {
         mainSplit.setDisable(true);
