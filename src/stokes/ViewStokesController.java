@@ -558,9 +558,9 @@ public class ViewStokesController implements Initializable {
             loginPane.setVisible(false);
             itemPane.setVisible(false);   
             selectedPane.setVisible(true);  
-        orderName.setText("Gizi");
-        orderAddress.setText("1186 Elm utca 66.");
-        orderPrice.setText("1 000 000 $");        
+        orderName.setText("Mabel Wheeler");
+        orderAddress.setText("1186 Parklane sétány 45.");
+        orderPrice.setText("1 000 font");        
     }   
 
      @FXML

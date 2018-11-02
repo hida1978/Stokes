@@ -100,7 +100,7 @@ public class DBItem {
     
     public void updateItem(Item item){
       try {
-            String sql = "update items set name = ?, description = ?, quantity = ?, something = ? where id = ?";
+            String sql = "update items set name = ?, description = ?, quantity = ?, price = ? where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, item.getName());
             preparedStatement.setString(2, item.getDescription());
@@ -126,35 +126,4 @@ public class DBItem {
             System.out.println(""+ex);
         }
     }
-
-//    public void checkPw(String inpPW, String inpUN) {
-//        try {
-//            String sql = "select * from contacts where (password = ? and email = ?)";
-//            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-//            preparedStatement.setString(1, inpPW);  
-//            preparedStatement.setString(2, inpUN);  
-//            
-//            ResultSet rs = preparedStatement.executeQuery();
-//            while (rs.next()){
-//                String email = rs.getString("email");
-//                String password = rs.getString("password");      
-//                System.out.println(email + " | " + password);
-//                login.add(email);                
-//                login.add(password);
-//            }
-//                if (login.size()==2){
-//                    System.out.println(login);                    
-//                    System.out.println("belépés engedélyezve!");
-//                    ViewStokesController.grantAccess = true;
-//                }else{
-//                    System.out.println("belépés megtagadva!");                    
-////                    alert("");                    
-//                }                
-//        } catch (SQLException ex) {
-//            System.out.println("Valami baj van a jelszó ellenörzésekor!");
-//            System.out.println(""+ex);
-//        }
-//    }
- 
 }
-    

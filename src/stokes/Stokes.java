@@ -18,6 +18,7 @@ public class Stokes extends Application {
         stage.setResizable(false);
         stage.setWidth(870);
         stage.setHeight(750);
+        stage.setTitle("Stokes Süteménytársaság");
         stage.setScene(scene);
         stage.show();
     }
