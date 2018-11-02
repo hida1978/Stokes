@@ -23,8 +23,8 @@ public class PdfGeneration {
             PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
             document.open();
             Image image1 = Image.getInstance(getClass().getResource("/logo.jpg"));
-            image1.scaleToFit(400, 172);
-            image1.setAbsolutePosition(170f, 650f);
+            image1.scaleToFit(350, 100);
+            image1.setAbsolutePosition(120f, 650f);
             document.add(image1);
             
             //Sortörések
@@ -34,7 +34,7 @@ public class PdfGeneration {
             float[] columnWidths = {2, 4, 4, 6};
             PdfPTable table = new PdfPTable(columnWidths);
             table.setWidthPercentage(100);
-            PdfPCell cell = new PdfPCell(new Phrase("KontaktLista"));
+            PdfPCell cell = new PdfPCell(new Phrase("Felhasználók listája"));
             cell.setBackgroundColor(GrayColor.GRAYWHITE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setColspan(4);
@@ -64,7 +64,7 @@ public class PdfGeneration {
            
  
             //Aláírás
-            Chunk signature = new Chunk("\n\n Generálva a Telefonkönyv alkalmazás segítségével.");
+            Chunk signature = new Chunk("\n\n Generálva a Stokes Sütemény alkalmazás segítségével.");
             Paragraph base = new Paragraph(signature);
             document.add(base);
 

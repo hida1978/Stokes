@@ -143,8 +143,12 @@ public class ViewStokesController implements Initializable {
     public static boolean grantAccess = false;
 
     
-    private final ObservableList<Person> data = FXCollections.observableArrayList();  
-    private final ObservableList<Item> dataItem = FXCollections.observableArrayList(new Item ("saher torta", "csokis piskóta baracklekvárral bolondítva", "1", "3000"));     
+    private final ObservableList<Person> data = FXCollections.observableArrayList(
+            new Person ("a", "a", "a", "a"));  
+    private final ObservableList<Item> dataItem = FXCollections.observableArrayList(
+            new Item ("Saher torta", "csokis piskóta baracklekvárral bolondítva", "1", "6000"),
+            new Item ("Oroszkrém torta", "vaniliás tekszínes krém, kandírozott gyümölcsökkel", "2", "6500"),            
+            new Item ("Eper koszorú", "égetett tészta koszorú eperkrémmel töltve", "1", "3800"));     
     private final ObservableList<Item> itemDataListSelected = FXCollections.observableArrayList();      
 
 // *****TABLES SETUP ***********************************************************       
@@ -544,6 +548,7 @@ public class ViewStokesController implements Initializable {
      @FXML
     private void selectItemButton(ActionEvent event) {
 //            ObservableList<Item> itemDataListSelected = FXCollections.observableArrayList();  
+        itemDataListSelected.clear();
             for(Item bean : dataItem){
                 if (bean.getSelect().isSelected()){
                     itemDataListSelected.add(bean);
@@ -560,9 +565,21 @@ public class ViewStokesController implements Initializable {
 
      @FXML
     private void confirmSelectButton(ActionEvent event) {
-        alert("A Stokes Süteménytársaság mindíg az ön szolgálatában áll asszonyom!!");
+        alert("A Stokes Süteménytársaság mindig az ön szolgálatában áll Asszonyom!!");
           
     } 
+
+    @FXML
+    private void exportUserButton(ActionEvent event) {
+        String fileName = inputExportName.getText();
+        fileName = fileName.replaceAll("\\s+", "");
+        if (fileName != null && !fileName.equals("")) {
+            PdfGeneration pdfCreator = new PdfGeneration();
+            pdfCreator.pdfGeneration(fileName, data);
+        }else{
+            alert("Adj meg egy fájlnevet!");
+        }
+    }
     
     private void alert(String text) {
         mainSplit.setDisable(true);
